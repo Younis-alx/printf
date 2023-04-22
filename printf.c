@@ -7,7 +7,7 @@
 int _printf(const char *format, ...)
 {
 va_list v1;
-int i = 0, k = 0;
+int i = 0, k = 1;
 char buff[100] = {0};
 char *str;
 va_start(v1, format);
