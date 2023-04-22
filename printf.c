@@ -45,7 +45,7 @@ k++;
 }
 i++;
 }
-write(1, &buff, k + 1);
+write(1, &buff, k);
 va_end(v1);
-return (k);
+return (k + 1);
 }
