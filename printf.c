@@ -47,5 +47,5 @@ i++;
 }
 write(1, &buff, k);
 va_end(v1);
-return (k + 1);
+return (k);
 }
