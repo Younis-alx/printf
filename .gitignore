@@ -9,3 +9,6 @@
 
 # Ignore main.c as specified on project
 main.c
+# Ignore *.out
+
+*out
