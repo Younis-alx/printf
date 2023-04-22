@@ -11,7 +11,7 @@ int i = 0, k = 0;
 char buff[100] = {0};
 char *str;
 va_start(v1, format);
-while (format && format[i])
+for (i = 0; format != NULL && format[i] != '\0'; i++)
 {
 if (format[i] == '%')
 {
@@ -43,7 +43,6 @@ else
 buff[k] = format[i];
 k++;
 }
-i++;
 }
 write(1, &buff, k);
 va_end(v1);
