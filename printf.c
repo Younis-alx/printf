@@ -7,7 +7,7 @@
 int _printf(const char *format, ...)
 {
 va_list v1;
-int i = 0, k = 1;
+int i = 0, k = 0;
 char buff[100] = {0};
 char *str;
 va_start(v1, format);
@@ -45,8 +45,7 @@ k++;
 }
 i++;
 }
-write(1, &buff, k);
+write(1, &buff, k + 1);
 va_end(v1);
 return (k);
 }
-
