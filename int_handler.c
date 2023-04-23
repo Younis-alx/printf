@@ -9,7 +9,11 @@
 void num_handler(char arr[], int *k, va_list v1)
 {
 char tmp[20];
-_itoa(va_arg(v1, int), tmp, 10);
+int num;
+num = va_arg(v1, int);
+if (num == NULL)
+num = 0;
+_itoa(num, tmp, 10);
 _strcpy(&arr[*k], tmp);
 *k += _strlen(tmp);
 }
