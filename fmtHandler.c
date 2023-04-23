@@ -17,7 +17,7 @@ switch (c)
 case 'c':
 {
 arr[*k] = va_arg(v1, int);
-++*k;
+++(*k);
 break;
 }
 case 's':
@@ -30,7 +30,7 @@ break;
 case '%':
 {
 arr[*k] = '%';
-++*k;
+++(*k);
 break;
 }
 case 'i':
@@ -46,8 +46,8 @@ break;
 default:
 {
 arr[*k] = '%';
-arr[++*k] = c;
-++*k;
+arr[++(*k)] = c;
+++(*k);
 }
 }
 }
