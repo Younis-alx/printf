@@ -1,14 +1,3 @@
-# Ignore all
-*
-
-# Unignore all with extensions
-!*.*
-
-# Unignore all dirs
-!*/
-
-# Ignore main.c as specified on project
-main.c
-# Ignore *.out
-
-*out
+*~
+*.out
+*.swp
