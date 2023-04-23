@@ -11,7 +11,7 @@ void num_handler(char arr[], int *k, va_list v1)
 char tmp[20];
 int num;
 num = va_arg(v1, int);
-if (num == NULL)
+if (!num)
 num = 0;
 _itoa(num, tmp, 10);
 _strcpy(&arr[*k], tmp);
