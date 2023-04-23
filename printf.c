@@ -8,35 +8,15 @@ int _printf(const char *format, ...)
 {
 va_list v1;
 int i = 0, k = 0;
+int *kr = &k;
 char buff[100] = {0};
-char *str;
 va_start(v1, format);
 for (i = 0; format != NULL && format[i] != '\0'; i++)
 {
 if (format[i] == '%')
 {
 i++;
-switch (format[i])
-{
-case 'c':
-{
-buff[k] = va_arg(v1, int);
-k++;
-break;
-}
-case 's':
-{
-str = va_arg(v1, char *);
-_strcpy(&buff[k], str);
-k += _strlen(str);
-break;
-}
-case '%':
-{
-buff[k] = '%';
-k++;
-}
-}
+fmt_handler(kr, buff, format[i], v1);
 }
 else
 {
