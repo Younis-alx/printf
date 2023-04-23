@@ -7,6 +7,7 @@
 int _printf(const char *format, ...)
 {
 	va_list v1;
+        va_start(v1, format);
 	int i = 0, k = 0;
 	int *kr = &k;
 	char buff[BUFFSIZE];
