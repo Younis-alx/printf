@@ -15,7 +15,7 @@ return (-1);
 if (format[0] == '%' && format[1] == ' ' && format[2] == '\0')
 return (-1);
 va_start(v1, format);
-for (i = 0; format != NULL && format[i] != '\0'; i++)
+for (i = 0; format != NULL && format[i]; i++)
 {
 if (format[i] == '%')
 {
