@@ -9,7 +9,7 @@ int _printf(const char *format, ...)
 va_list v1;
 int i = 0, k = 0;
 int *kr = &k;
-char buff[100] = {0};
+char buff[BUFFSIZE];
 va_start(v1, format);
 for (i = 0; format != NULL && format[i] != '\0'; i++)
 {
