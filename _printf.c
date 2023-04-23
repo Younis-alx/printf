@@ -11,7 +11,6 @@ int _printf(const char *format, ...)
 	int *kr;
 	int i, k;
 	va_list v1;
-va_start(v1, format);
 i = 0;
 k = 0;
 kr = &k;
