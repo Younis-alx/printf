@@ -23,6 +23,8 @@ break;
 case 's':
 {
 str = va_arg(v1, char *);
+if (str == NULL)
+str = "(null)";
 _strcpy(&arr[*k], str);
 *k += _strlen(str);
 break;
