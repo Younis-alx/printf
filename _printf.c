@@ -1,38 +1,53 @@
 #include "main.h"
+#include <stdarg.h>
+#include <stddef.h>
+#include <stdlib.h>
+#include <stdio.h>
+
 /**
-* _printf - print string to stdout
-* @format: char string to output
-* Return: count of char printed
-*/
+ * _printf - a function that prints char, string, integer and decimal formats
+ * @format: user input format string, may or may not contain format identifiers
+ *
+ * Return: void
+ */
+
 int _printf(const char *format, ...)
 {
+	va_list ap;
+	int i;
+	int ret_value;
+	int (*p)(va_list);
 
-	char buff[BUFFSIZE];
-	int *kr;
-	int i, k;
-	va_list v1;
-i = 0;
-k = 0;
-kr = &k;
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && format[2] == '\0')
-		return (-1);
-	va_start(v1, format);
-	for (i = 0; format != NULL && format[i]; i++)
 	{
-		if (format[i] == '%')
+		return (-1);
+	}
+	ret_value = 0;
+	va_start(ap, format);
+	i = 0;
+	while (format[i] != '\0')
+	{
+		if (format[i] != '%')
 		{
-			i++;
-			fmt_handler(kr, buff, format[i], v1);
+			ret_value = ret_value + 1;
+			_putchar(format[i]);
 		}
 		else
 		{
-			buff[k] = format[i];
-			k++;
+			p = get_func(format[i + 1]);
+			if (p == NULL)
+			{
+				_putchar(format[i]);
+				ret_value = ret_value + 1;
+			}
+			else
+			{
+				ret_value = ret_value + p(ap);
+				i = i + 1;
+			}
 		}
+		i = i + 1;
 	}
-	write(1, &buff, k);
-	va_end(v1);
-	return (k);
+	va_end(ap);
+	return (ret_value);
 }

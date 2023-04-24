@@ -1,15 +1,38 @@
-#ifndef MAIN
-#define MAIN
-#include <stdio.h>
+#ifndef __MAIN_H__
+#define __MAIN_H__
+
 #include <stdarg.h>
-#include <unistd.h>
+/* Declaration of typedef structs: */
+
+/**
+ * struct format_specs - format specifiers and connected function
+ *
+ * @specifier: such as those found in format string
+ * @f: The function associated
+ */
+
+typedef struct format_specs
+{
+	char specifier;
+	int (*f)(va_list);
+} spec_t;
+
+/* List of prototypes and their respective declaration files */
 int _printf(const char *format, ...);
-char *_strcpy(char *dest, char *src);
-int _strlen(char *s);
+
+/* 1-helper_functions.c */
 int _putchar(char c);
-void fmt_handler(int *k, char arr[], char c, va_list v1);
-char * _itoa(int i, char *strout, int base);
-char *_strrev (char *format);
-void num_handler(char arr[], int *k, va_list v1);
-#define BUFFSIZE 1024
-#endif
+int print_char(va_list ap);
+int print_str(va_list ap);
+int print_int(va_list ap);
+int print_decimal(va_list ap);
+/* 2-helper_functions.c */
+int _strlen(char *s);
+int _strcmp(char *s1, char *s2);
+int (*get_func(char s))(va_list);
+int print_percent(__attribute__((unused))va_list ap);
+int put_count(char c);
+/* 3-helper_functions.c */
+/* 4-helper_functions.c */
+
+#endif /* __MAIN_H__ */
