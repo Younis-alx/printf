@@ -1,7 +1,11 @@
 #ifndef __MAIN_H__
 #define __MAIN_H__
-
+#include <unistd.h>
 #include <stdarg.h>
+#include <stdio.h>
+#include <stddef.h>
+#include <stdlib.h>
+
 /* Declaration of typedef structs: */
 
 /**

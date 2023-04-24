@@ -1,7 +1,4 @@
 #include "main.h"
-#include <stddef.h>
-#include <stdarg.h>
-#include <stdlib.h>
 
 /**
  * put_count - calls _putchar and increments counter

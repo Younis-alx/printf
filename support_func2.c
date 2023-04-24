@@ -1,8 +1,4 @@
-#include <unistd.h>
-#include <stdarg.h>
-#include <stdio.h>
 #include "main.h"
-
 /**
  * _putchar - writes the character c to stdout
  * @c: The character to print
@@ -98,10 +94,10 @@ int print_int(va_list ap)
 }
 
 /**
- * print_decimal - prints a decimal
+ * print_decimal - prints decimal
  * @ap: user input
  *
- * Return: number of characters printed
+ * Return: number of char printed
  */
 int print_decimal(va_list ap)
 {
