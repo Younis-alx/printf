@@ -55,9 +55,9 @@ int print_str(va_list ap)
  */
 int print_int(va_list ap)
 {
-	long int x = va_arg(ap, int);
+	int x = va_arg(ap, int);
 	int z = 0;
-	long int i = 10000000000;
+	long int i = 1000000000;
 	int k = 0;
 	int count = 0;
 
