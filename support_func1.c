@@ -55,7 +55,7 @@ int (*get_func(char s))(va_list)
 	spec_t fspecs[] = {
 		{'c', print_char},
 		{'s', print_str},
-		{'i', print_int},
+		{'i', print_decimal},
 		{'d', print_decimal},
 		{'%', print_percent},
 		{'\0', NULL}
