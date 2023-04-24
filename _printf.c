@@ -15,21 +15,21 @@ int _printf(const char *format, ...)
 {
 	va_list ap;
 	int index;
-	int return_val;
+	int rtr_val;
 	int (*p)(va_list);
 
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 	{
 		return (-1);
 	}
-	return_val = 0;
+	rtr_val = 0;
 	va_start(ap, format);
 	index = 0;
 	while (format[index] != '\0')
 	{
 		if (format[index] != '%')
 		{
-			return_val = return_val + 1;
+			rtr_val = rtr_val + 1;
 			_putchar(format[index]);
 		}
 		else
@@ -38,16 +38,16 @@ int _printf(const char *format, ...)
 			if (p == NULL)
 			{
 				_putchar(format[index]);
-				return_val = return_val + 1;
+				rtr_val = rtr_val + 1;
 			}
 			else
 			{
-				return_val = return_val + p(ap);
+				rtr_val = rtr_val + p(ap);
 				index = index + 1;
 			}
 		}
 		index = index + 1;
 	}
 	va_end(ap);
-	return (return_val);
+	return (rtr_val);
 }
