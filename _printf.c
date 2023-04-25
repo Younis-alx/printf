@@ -3,51 +3,55 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "main.h"
 
 /**
- * _printf - a function that prints char, str, int and decimal fmt
- * @format: user input format string, with/without format specifier.
- *
- * Return: void
+ * _printf - print function
+ * @format: str
+ * Return: integer
  */
 
 int _printf(const char *format, ...)
 {
-	va_list ap;
-	int index;
-	int rtr_val;
-	int (*p)(va_list);
+	char *buff;
+	int  i = 0, count = 0;
+	va_list arg_value;
+	int (*func)(char *, int, va_list);
 
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+	buff = malloc(4000);
+	if ((!format || !buff) || (format[0] == '%' && format[1] == '\0'))
 	{
-		return (-1);
+		free(buff);
+		exit(1);
 	}
-	rtr_val = 0;
-	va_start(ap, format);
-	index = 0;
-	while (format[index] != '\0')
+
+	va_start(arg_value, format);
+
+	while (format[i])
 	{
-		if (format[index] != '%')
+		if (format[i] != '%')
 		{
-			rtr_val = rtr_val + 1;
-			_putchar(format[index]);
+			buff[count] = format[i];
+			count++;
 		}
 		else
 		{
-			p = get_func(format[index + 1]);
-			if (p == NULL)
+			func = check_prtr(format[i + 1]);
+			if (!func)
 			{
-				_putchar(format[index]);
-				rtr_val = rtr_val + 1;
+				buff[count] = '%';
+				i++;
+				count++;
+				continue;
 			}
-			else
-			{
-				rtr_val = rtr_val + p(ap);
-				index = index + 1;
-			}
+			count = func(&buff[count], count, arg_value);
+			i++;
 		}
-		index = index + 1;
+		i++;
 	}
-	va_end(ap);
-	return (rtr_val);
+	write(1, buff, count);
+	va_end(arg_value);
+	free(buff);
+	return (count);
 }
+

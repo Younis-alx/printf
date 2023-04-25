@@ -11,25 +11,46 @@
 /**
  * struct format_specs - format specifiers and connected function
  *
- * @specifier: such as those found in format string
+ * @c: such as those found in format string
  * @f: The function associated
  */
 
-typedef struct format_specs
+typedef struct ptr
 {
-	char specifier;
-	int (*f)(va_list);
-} spec_t;
+	char *c;
+	int (*f)(char *, int, va_list);
+} ptr_ch;
+
+
 
 int _printf(const char *format, ...);
-int _putchar(char c);
-int print_char(va_list ap);
-int print_str(va_list ap);
-int print_int(va_list ap);
-int print_decimal(va_list ap);
+int (*check_prtr(char specifier))(char *, int, va_list);
+
+int func_d(char *buff, int count, va_list value);
+int func_i(char *buff, int count, va_list value);
+int func_u(char *buff, int count, va_list value);
+int func_o(char *buff, int count, va_list value);
+int func_x(char *buff, int count, va_list value);
+int func_X(char *buff, int count, va_list value);
+int func_c(char *buff, int count, va_list value);
+int func_s(char *buff, int count, va_list value);
+int func_ptg(char *buff, int count, va_list value);
+int func_b(char *buff, int count, va_list value);
+int func_r(char *buff, int count, va_list value);
+int func_R(char *buff, int count, va_list value);
+int func_p(char *buff, int count, va_list value);
+
+int _assign(char *buff, int count, char *value);
+int _rev_assign(char *buff, int count, char *value);
+
 int _strlen(char *s);
-int _strcmp(char *s1, char *s2);
-int (*get_func(char s))(va_list);
-int print_percent(__attribute__((unused))va_list ap);
-int put_count(char c);
-#endif /* __MAIN_H__ */
+char *_reverse(char *s, int n);
+char *_rot13(char *str);
+void _strcpy(char *dest, char *src);
+void _rev_ptr(char *str);
+
+int _abs(int n);
+char *_itoa(int value, int base);
+char *_utoa(unsigned int value, unsigned int base);
+char *_lcutoa(unsigned int value, unsigned int base);
+  #endif /* __MAIN_H__ */
