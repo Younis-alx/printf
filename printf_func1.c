@@ -37,8 +37,8 @@ char *str;
 unsigned int num_addr;
 void *addr = va_arg(value, void *);
 
-  if (addr == NULL)
-    return (write(1, "(nil)", 5));
+	if (addr == NULL)
+		return (write(1, "(nil)", 5));
 
 num_addr = (unsigned long)addr;
 

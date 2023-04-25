@@ -23,7 +23,7 @@ int (*check_prtr(char specifier))(char *, int, va_list)
 		{"b", func_b},
 		{"r", func_r},
 		{"R", func_R},
-                {"p", func_p},
+		{"p", func_p},
 		{NULL, NULL}
 	};
 
