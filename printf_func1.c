@@ -1,4 +1,8 @@
 #include "main.h"
+#include <stdarg.h>
+#include <stddef.h>
+#include <stdlib.h>
+#include <stdio.h>
 /**
  * func_x - add a unsigned hexadecimal to buff
  * @buff: str var
