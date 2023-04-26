@@ -25,12 +25,10 @@ char *helper_func(char *buff)
 		count++;
 		tmp++;
 	}
-
 	char *new_s = malloc(count + 1);
 	char *returned_new = new_s;
 
 	tmp = buff;
-
 	char *hex_chars = "0123456789ABCDEF";
 
 	while (*tmp != '\0')
@@ -48,16 +46,16 @@ char *helper_func(char *buff)
 		{
 			*new_s = *tmp;
 		}
-
 		new_s++;
 		tmp++;
 	}
 	*new_s = '\0';
-	return returned_new;
+	return (returned_new);
 }
 
 int _printf(const char *format, ...)
 {
+
 	char *buff;
 	int i = 0, count = 0;
 	va_list arg_value;
@@ -69,9 +67,7 @@ int _printf(const char *format, ...)
 		free(buff);
 		exit(1);
 	}
-
 	va_start(arg_value, format);
-
 	while (format[i])
 	{
 		if (format[i] != '%')
@@ -94,7 +90,6 @@ int _printf(const char *format, ...)
 		}
 		i++;
 	}
-
 	char *buff_n = helper_func(buff);
 	write(1, buff_n, count);
 	va_end(arg_value);
