@@ -11,10 +11,55 @@
  * Return: integer
  */
 
+char *helper_func(char *buff)
+{
+	char *tmp = buff;
+	int count = 0;
+
+	while (*tmp != '\0')
+	{
+		if ((*tmp > 0 && *tmp < 32) || *tmp >= 127)
+		{
+			count = count + 3;
+		}
+		count++;
+		tmp++;
+	}
+
+	char *new_s = malloc(count + 1);
+	char *returned_new = new_s;
+
+	tmp = buff;
+
+	char *hex_chars = "0123456789ABCDEF";
+
+	while (*tmp != '\0')
+	{
+		if ((*tmp > 0 && *tmp < 32) || *tmp >= 127)
+		{
+			*new_s = '\\';
+			*(new_s + 1) = 'x';
+
+			*(new_s + 2) = hex_chars[(*tmp >> 4) & 0x0f];
+			*(new_s + 3) = hex_chars[*tmp & 0x0f];
+			new_s += 3;
+		}
+		else
+		{
+			*new_s = *tmp;
+		}
+
+		new_s++;
+		tmp++;
+	}
+	*new_s = '\0';
+	return returned_new;
+}
+
 int _printf(const char *format, ...)
 {
 	char *buff;
-	int  i = 0, count = 0;
+	int i = 0, count = 0;
 	va_list arg_value;
 	int (*func)(char *, int, va_list);
 
@@ -49,9 +94,10 @@ int _printf(const char *format, ...)
 		}
 		i++;
 	}
-	write(1, buff, count);
+
+	char *buff_n = helper_func(buff);
+	write(1, buff_n, count);
 	va_end(arg_value);
-	free(buff);
+	free(buff_n);
 	return (count);
 }
-
