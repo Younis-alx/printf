@@ -15,7 +15,11 @@ char *helper_func(char *buff)
 {
 	char *tmp = buff;
 	int count = 0;
+	char *new_s;
+	char *returned_new;
+	char *hex_chars;
 
+	hex_chars = "0123456789ABCDEF";
 	while (*tmp != '\0')
 	{
 		if ((*tmp > 0 && *tmp < 32) || *tmp >= 127)
@@ -25,12 +29,9 @@ char *helper_func(char *buff)
 		count++;
 		tmp++;
 	}
-	char *new_s = malloc(count + 1);
-	char *returned_new = new_s;
-
+	new_s = malloc(count + 1);
+	returned_new = new_s;
 	tmp = buff;
-	char *hex_chars = "0123456789ABCDEF";
-
 	while (*tmp != '\0')
 	{
 		if ((*tmp > 0 && *tmp < 32) || *tmp >= 127)
@@ -55,11 +56,11 @@ char *helper_func(char *buff)
 
 int _printf(const char *format, ...)
 {
-
 	char *buff;
 	int i = 0, count = 0;
 	va_list arg_value;
 	int (*func)(char *, int, va_list);
+	char *buff_n;
 
 	buff = malloc(4000);
 	if ((!format || !buff) || (format[0] == '%' && format[1] == '\0'))
@@ -90,7 +91,7 @@ int _printf(const char *format, ...)
 		}
 		i++;
 	}
-	char *buff_n = helper_func(buff);
+	buff_n = helper_func(buff);
 	write(1, buff_n, count);
 	va_end(arg_value);
 	free(buff_n);
